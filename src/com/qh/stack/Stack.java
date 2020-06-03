@@ -2,7 +2,7 @@ package com.qh.stack;
 
 /**
  * @ProjectName data-construction
- * @ClassName Stack
+ * @ClassName Stack 栈
  * @Description TODO
  * @Author mi
  * @Date 2020/6/1 17:08
