@@ -43,8 +43,10 @@ public class ArrayQueryTestMain {
 
         for (int i = 0; i < 10; i++) {
             arrayQuery.enqueue(i);
+            if(i/3==2){
+                arrayQuery.dequeue();
+            }
         }
-        arrayQuery.dequeue();
         System.out.println(arrayQuery);
     }
 }
