@@ -36,4 +36,15 @@ public class ArrayQueryTestMain {
         }
         System.out.println(arrayQuery);
     }
+
+    @Test
+    public  void test3() {
+        LinkedQueue<Integer> arrayQuery = new LinkedQueue<>();
+
+        for (int i = 0; i < 10; i++) {
+            arrayQuery.enqueue(i);
+        }
+        arrayQuery.dequeue();
+        System.out.println(arrayQuery);
+    }
 }
