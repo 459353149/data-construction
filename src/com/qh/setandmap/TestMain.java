@@ -42,5 +42,6 @@ public class TestMain {
             bstSet.add(i, i);
         }
         System.out.println(bstSet);
+        System.out.println(bstSet.get(5));
     }
 }

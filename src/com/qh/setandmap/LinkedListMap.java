@@ -119,7 +119,7 @@ public class LinkedListMap<K, V> implements Map<K, V> {
         Node cur = dummyHead.node;
         while (cur != null) {
             if (cur.key.equals(key)) {
-                return cur.node;
+                return cur;
             }
             cur = cur.node;
         }
