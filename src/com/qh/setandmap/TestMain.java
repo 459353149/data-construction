@@ -13,7 +13,7 @@ import org.junit.Test;
 public class TestMain {
 
     @Test
-    public  void test01() {
+    public void test01() {
         BSTSet<Integer> bstSet = new BSTSet<>();
         for (int i = 0; i < 10; i++) {
             bstSet.add(i);
@@ -22,7 +22,7 @@ public class TestMain {
     }
 
     @Test
-    public  void test02() {
+    public void test02() {
         LinkedSet<Integer> bstSet = new LinkedSet<>();
         for (int i = 0; i < 10; i++) {
             bstSet.add(i);
@@ -34,4 +34,13 @@ public class TestMain {
         System.out.println(bstSet);
     }
 
+
+    @Test
+    public void test03() {
+        LinkedListMap<Integer, Integer> bstSet = new LinkedListMap<>();
+        for (int i = 0; i < 10; i++) {
+            bstSet.add(i, i);
+        }
+        System.out.println(bstSet);
+    }
 }
