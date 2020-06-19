@@ -160,6 +160,12 @@ public class BSTMap<K extends Comparable<K>, V> implements Map<K, V> {
     }
 
 
+    /**
+     * 递归寻找node
+     * @param node
+     * @param key
+     * @return
+     */
     private Node getNode(Node node, K key) {
         if (node == null) {
             return null;
