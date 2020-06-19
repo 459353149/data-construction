@@ -10,7 +10,7 @@ import com.qh.binarytree.BST;
  * @Date 2020/6/10 14:20
  * @Version 1.0
  **/
-public class BSTSet<E extends  Comparable<E>> implements Set<E> {
+public class BSTSet<E extends Comparable<E>> implements Set<E> {
     private BST<E> bst;
 
     public BSTSet() {
@@ -19,12 +19,12 @@ public class BSTSet<E extends  Comparable<E>> implements Set<E> {
 
     @Override
     public void add(E e) {
-       bst.add(e);
+        bst.add(e);
     }
 
     @Override
     public void remove(E e) {
-
+        bst.remove(e);
     }
 
     @Override

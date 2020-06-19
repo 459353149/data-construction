@@ -20,5 +20,8 @@ public class TestMain {
         bst.inOrder();
         System.out.println();
         System.out.println(bst);
+
+        System.out.println(bst.removeMin());
+        System.out.println(bst.removeMax());
     }
 }

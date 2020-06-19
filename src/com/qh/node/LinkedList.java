@@ -66,6 +66,23 @@ public class LinkedList<E> {
         return get(size);
     }
 
+    public void removeElement(E e) {
+        Node prev = dummyHead;
+        while (prev.node != null) {
+            if (prev.node.e.equals(e)) {
+                break;
+            }
+            prev = prev.node;
+        }
+        if (prev.node != null) {
+            Node delNode = prev.node;
+            prev.node = delNode.node;
+            delNode.node = null;
+        }
+
+
+    }
+
     public void set(int index, E e) {
         if (index < 0 || index > size)
             throw new IllegalArgumentException("add index is illegal");

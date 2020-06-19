@@ -60,12 +60,12 @@ public class BST<E extends Comparable<E>> {
     }
 
 
-    public void inOrder(){
+    public void inOrder() {
         inOrder(root);
     }
 
     private void inOrder(Node root) {
-        if(null == root){
+        if (null == root) {
             return;
         }
         inOrder(root.left);
@@ -134,9 +134,9 @@ public class BST<E extends Comparable<E>> {
             stringBuilder.append(i(i) + "null\n");
             return;
         }
-        stringBuilder.append(i(i)+root.e+"\n");
-        bstString(root.left,i+1,stringBuilder);
-        bstString(root.right,i+1,stringBuilder);
+        stringBuilder.append(i(i) + root.e + "\n");
+        bstString(root.left, i + 1, stringBuilder);
+        bstString(root.right, i + 1, stringBuilder);
     }
 
     private String i(int i) {
@@ -157,4 +157,167 @@ public class BST<E extends Comparable<E>> {
             this.right = null;
         }
     }
+
+
+    /**
+     * 寻找二分搜索树最小元素
+     *
+     * @return
+     */
+    public E minE() {
+        if (size == 0) {
+            throw new IllegalArgumentException("is null");
+        }
+        return minE(root).e;
+    }
+
+    /**
+     * 递归寻找
+     *
+     * @param root
+     * @return
+     */
+    private Node minE(Node root) {
+        if (null == root.left) {
+            return root;
+        }
+        return minE(root.left);
+    }
+
+    /**
+     * 查询最大元素
+     *
+     * @return
+     */
+    public E maxE() {
+        if (0 == size) {
+            throw new IllegalArgumentException(" is null");
+        }
+        return maxE(root).e;
+    }
+
+    /**
+     * 递归寻找
+     *
+     * @param root
+     * @return
+     */
+    private Node maxE(Node root) {
+        if (null == root.right) {
+            return root;
+        }
+        return maxE(root.right);
+    }
+
+    /**
+     * 删除最小值 并返回最小值
+     *
+     * @return
+     */
+    public E removeMin() {
+        E e = minE();
+        root = removeMin(root);
+        return e;
+    }
+
+    /**
+     * 递归删除node节点下最小节点
+     * 返回新得二分搜索书得根
+     *
+     * @param root
+     */
+    private Node removeMin(Node root) {
+        // 递归结束条件
+        if (null == root.left) {
+            // 判断当前节点是否有右节点
+            Node rightNode = root.right;
+            root.right = null;
+            size--;
+            return rightNode;
+        }
+        root.left = removeMin(root.left);
+        return root;
+    }
+
+    /**
+     * 删除最da值 并返回最大值
+     *
+     * @return
+     */
+    public E removeMax() {
+        E e = maxE();
+        root = removeMax(root);
+        return e;
+    }
+
+    /**
+     * 递归删除node节点下最小节点
+     * 返回新得二分搜索书得根
+     *
+     * @param root
+     */
+    private Node removeMax(Node root) {
+        // 递归结束条件
+        if (null == root.right) {
+            // 判断当前节点是否有右节点
+            Node leftNode = root.left;
+            root.left = null;
+            size--;
+            return leftNode;
+        }
+        root.right = removeMin(root.right);
+        return root;
+    }
+
+    /**
+     * 删除指定元素
+     *
+     * @param e
+     */
+    public void remove(E e) {
+        root = remove(root, e);
+    }
+
+    /**
+     * 删除指定元素
+     *
+     * @param root
+     * @param e
+     * @return
+     */
+    private Node remove(Node root, E e) {
+        if (null == root) {
+            return null;
+        }
+        if (e.compareTo(root.e) < 0) {
+            root.left = remove(root.left, e);
+            return root;
+        }
+        if (e.compareTo(root.e) > 0) {
+            root.right = remove(root.right, e);
+            return root;
+        }
+        if (null == root.left) {
+            // 判断当前节点是否有右节点
+            Node rightNode = root.right;
+            root.right = null;
+            size--;
+            return rightNode;
+        }
+        if (null == root.right) {
+            // 判断当前节点是否有右节点
+            Node leftNode = root.left;
+            root.left = null;
+            size--;
+            return leftNode;
+        }
+        // 待删除节点存在左右节点时，找到右节点最小节点
+        Node successor = maxE(root.right);
+        successor.right = removeMax(root.right);
+        successor.left = root.left;
+        root.left = root.right = null;
+        return successor;
+    }
+
+
 }
