@@ -102,7 +102,7 @@ public class Array<T> {
      */
     private void resize(int i) {
         T[] newDate = (T[]) new Object[i];
-        for (int i1 = 0; i1 < data.length; i1++) {
+        for (int i1 = 0; i1 < newDate.length; i1++) {
             newDate[i1] = data[i1];
         }
         data = newDate;
@@ -231,21 +231,31 @@ public class Array<T> {
 
     /**
      * 获得最后一个元素
+     *
      * @return
      */
-    public T getLast(){
-        return get(size-1);
+    public T getLast() {
+        return get(size - 1);
     }
 
     /**
      * 获得第一个元素
+     *
      * @return
      */
-    public T getFirst(){
+    public T getFirst() {
         return get(0);
     }
 
 
+    public void swap(int i, int j) {
+        if (i < 0 || i > size || j < 0 || j >= size) {
+            throw new IllegalArgumentException("下标越界");
+        }
+        T t = data[i];
+        data[i] = data[j];
+        data[j] = t;
+    }
 
     @Override
     public String toString() {
